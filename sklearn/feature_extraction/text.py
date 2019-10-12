@@ -1351,6 +1351,31 @@ class TfidfTransformer(TransformerMixin, BaseEstimator):
     .. [MRS2008] C.D. Manning, P. Raghavan and H. Schütze  (2008).
                    Introduction to Information Retrieval. Cambridge University
                    Press, pp. 118-120.
+                   
+    Examples
+    --------
+    
+    # Example for the use on the basis of CountVectorizer:
+    from sklearn.feature_extraction.text import CountVectorizer
+    from sklearn.feature_extraction.text import TfidfTransformer
+    
+    corpus = [
+        'This is the first document.',
+        'This document is the second document.',
+        'And this is the third one.',
+        'Is this the first document?',
+    ]
+    
+    X1 = CountVectorizer()
+    outp1 = X1.fit_transform(corpus)
+    
+    print( outp1.toarray() )
+    print( outp1 )
+    
+    X2 = TfidfTransformer()
+    outp2 = X2.fit_transform(outp1)
+    print( outp2 )
+
     """
 
     def __init__(self, norm='l2', use_idf=True, smooth_idf=True,
